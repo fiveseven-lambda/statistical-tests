@@ -13,7 +13,7 @@ const Header = () => (
 );
 
 const Footer = () => (
-  <footer className='part footer'>
+  <footer className='footer'>
     Footer
   </footer>
 );
