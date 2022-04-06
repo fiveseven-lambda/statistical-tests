@@ -1,0 +1,14 @@
+.part {
+    background-color: #70ffff;
+    margin: 10px;
+}
+
+.body.wide {
+    display: flex;
+}
+.description.wide {
+    width: 20%;
+}
+.main.wide {
+    display: flex;
+}
