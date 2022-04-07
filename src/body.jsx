@@ -3,12 +3,6 @@ import { KaTeX } from './katex';
 
 import { Main } from './main';
 
-const Description = ({ wide }) => <div className={`part description ${wide}`}>
-  <h2>Descriptions</h2>
-  <p>The paired two-sample <KaTeX text='t'/>-test.
-  For independent random variables <KaTeX text='X_1, \ldots, X_n'/> and <KaTeX text='Y_1, \ldots, Y_n'/>, ...</p>
-</div>
-
 export const Body = () => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   React.useEffect(() => {
@@ -24,3 +18,13 @@ export const Body = () => {
     <Main wide={wide}/>
   </div>;
 }
+
+const Description = ({ wide }) => <div className={`part description ${wide}`}>
+  <h2>Descriptions</h2>
+  <p>
+    This page implements paired difference tests (<a href='https://en.wikipedia.org/wiki/Paired_difference_test'>Wikipedia</a>).
+  </p>
+  <p>
+    The paired two-sample <KaTeX text='t'/>-test (<a href='https://en.wikipedia.org/wiki/Student%27s_t-test#Paired_samples'>Wikipedia</a>).
+  </p>
+</div>

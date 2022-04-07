@@ -1,6 +1,13 @@
 import * as React from 'react';
 
-const SampleSize = ({input: [input, setInput]}) => {
+export const DataInput = ({ wide, input: [input, setInput] }) => <div className='part data-input'>
+  <h2>Data Input</h2>
+  <SampleSize input={[input, setInput]}/>
+  <Clear input={[input, setInput]}/>
+  <Data wide={wide} input={[input, setInput]}/>
+</div>
+
+const SampleSize = ({ input: [input, setInput] }) => {
   const [focused, setFocused] = React.useState(false);
   const setSize = (s, data) => {
     const new_size = Number(s);
@@ -91,10 +98,3 @@ const Data = ({wide, input: [input, setInput]}) => {
     </table>
   </div>
 }
-
-export const DataInput = ({wide, input: [input, setInput]}) => <div className='part data-input'>
-  <h2>Data Input</h2>
-  <SampleSize input={[input, setInput]}/>
-  <Clear input={[input, setInput]}/>
-  <Data wide={wide} input={[input, setInput]}/>
-</div>

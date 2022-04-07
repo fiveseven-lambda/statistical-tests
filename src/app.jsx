@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
-import './app.css';
+import './style.css';
 
 import { Body } from './body';
 
@@ -14,11 +14,12 @@ const Footer = () => <footer className='footer'>
   Footer
 </footer>
 
-const root = ReactDOMClient.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Header/>
-    <Body/>
-    <Footer/>
-  </React.StrictMode>,
-);
+ReactDOMClient
+  .createRoot(document.getElementById('root'))
+  .render(
+    <React.StrictMode>
+      <Header/>
+      <Body/>
+      <Footer/>
+    </React.StrictMode>,
+  );
