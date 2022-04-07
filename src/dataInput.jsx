@@ -4,6 +4,7 @@ export const DataInput = ({ wide, input: [input, setInput] }) => <div className=
   <h2>Data Input</h2>
   <SampleSize input={[input, setInput]}/>
   <Clear input={[input, setInput]}/>
+  <CSV input={[input, setInput]}/>
   <Data wide={wide} input={[input, setInput]}/>
 </div>
 
@@ -49,6 +50,75 @@ const Clear = ({input: [input, setInput]}) => <div>
       data: input.data.map(_ => ['', '']),
     }) }
   > clear all cells </button>
+</div>
+
+const CSV = ({ input: [input, setInput] }) => {
+  const [file, setFile] = React.useState(null);
+  const [format, setFormat] = React.useState([false, false]);
+  React.useEffect(() => {
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = event => {
+      console.log(event.target.result);
+    };
+    reader.readAsText(file);
+  });
+  return <details>
+    <summary>import csv</summary>
+    <div>
+      file: <input
+        type='file'
+        onChange={ event => {
+          if(event.target.files.length > 0) setFile(event.target.files[0])
+        } }
+      />
+    </div>
+    <div>
+      <SelectCSVFormat
+        format={[format, setFormat]}
+        value={[false, false]}
+        label='data only'
+        sample={'sample\nsample'}
+      />
+      <SelectCSVFormat
+        format={[format, setFormat]}
+        value={[true, false]}
+        label='with header row'
+        sample={'sample\nsample'}
+      />
+      <SelectCSVFormat
+        format={[format, setFormat]}
+        value={[false, true]}
+        label='with index column'
+        sample={'sample\nsample'}
+      />
+      <SelectCSVFormat
+        format={[format, setFormat]}
+        value={[false, false]}
+        label='with header row and index column'
+        sample={'sample\nsample'}
+      />
+    </div>
+  </details>
+}
+
+const SelectCSVFormat = ({
+  format: [format, setFormat],
+  value,
+  label,
+  sample,
+}) => <div>
+  <input
+    type='radio'
+    name='csv-format'
+    checked={ format.every((x, i) => x === value[i]) }
+    onChange={ _ => setFormat(value) }
+  />
+  <label>{label}</label>
+  <div className='csv-sample'>
+    <p>sample: </p>
+    <pre>{sample}</pre>
+  </div>
 </div>
 
 const Data = ({wide, input: [input, setInput]}) => {

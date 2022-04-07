@@ -42,3 +42,11 @@
   border: none;
   text-align: center;
 }
+
+.csv-sample {
+  display: flex;
+  align-items: center;
+}
+.csv-sample p {
+  margin: 10px;
+}

@@ -14,7 +14,6 @@ export const Body = () => {
   });
   const wide = windowWidth >= 800 ? 'wide' : 'narrow';
   return <div className={`body ${wide}`}>
-    <p>{windowWidth}</p>
     <Description wide={wide}/>
     <Main wide={wide}/>
   </div>;
