@@ -4,19 +4,15 @@ import './app.css';
 
 import { Body } from './body';
 
-const Header = () => (
-  <header className='part header'>
-    <h1>
-      Statistical Tests
-    </h1>
-  </header>
-);
+const Header = () => <header className='part header'>
+  <h1>
+    Statistical Tests
+  </h1>
+</header>
 
-const Footer = () => (
-  <footer className='footer'>
-    Footer
-  </footer>
-);
+const Footer = () => <footer className='footer'>
+  Footer
+</footer>
 
 const root = ReactDOMClient.createRoot(document.getElementById('root'));
 root.render(
