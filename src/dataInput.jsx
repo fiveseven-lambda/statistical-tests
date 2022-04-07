@@ -4,7 +4,7 @@ export const DataInput = ({ wide, input: [input, setInput] }) => <div className=
   <h2>Data Input</h2>
   <SampleSize input={[input, setInput]}/>
   <Clear input={[input, setInput]}/>
-  <CSV input={[input, setInput]}/>
+  <CSV wide={wide} input={[input, setInput]}/>
   <Data wide={wide} input={[input, setInput]}/>
 </div>
 
@@ -20,7 +20,7 @@ const SampleSize = ({ input: [input, setInput] }) => {
       alert('invalid sample size');
     }
   };
-  return <div>
+  return <div className='input-part'>
     sample size: <input
       type='number'
       min='1'
@@ -42,7 +42,7 @@ const SampleSize = ({ input: [input, setInput] }) => {
   </div>
 }
 
-const Clear = ({input: [input, setInput]}) => <div>
+const Clear = ({input: [input, setInput]}) => <div className='input-part'>
   <button
     onClick={ _ => setInput({
       ...input,
@@ -52,7 +52,7 @@ const Clear = ({input: [input, setInput]}) => <div>
   > clear all cells </button>
 </div>
 
-const CSV = ({ input: [input, setInput] }) => {
+const CSV = ({ wide, input: [input, setInput] }) => {
   const [file, setFile] = React.useState(null);
   const [format, setFormat] = React.useState([false, false]);
   React.useEffect(() => {
@@ -63,41 +63,45 @@ const CSV = ({ input: [input, setInput] }) => {
     };
     reader.readAsText(file);
   });
-  return <details>
+  return <details className={`input-part csv-input ${wide}`}>
     <summary>import csv</summary>
-    <div>
-      file: <input
-        type='file'
-        onChange={ event => {
-          if(event.target.files.length > 0) setFile(event.target.files[0])
-        } }
-      />
-    </div>
-    <div>
-      <SelectCSVFormat
-        format={[format, setFormat]}
-        value={[false, false]}
-        label='data only'
-        sample={'sample\nsample'}
-      />
-      <SelectCSVFormat
-        format={[format, setFormat]}
-        value={[true, false]}
-        label='with header row'
-        sample={'sample\nsample'}
-      />
-      <SelectCSVFormat
-        format={[format, setFormat]}
-        value={[false, true]}
-        label='with index column'
-        sample={'sample\nsample'}
-      />
-      <SelectCSVFormat
-        format={[format, setFormat]}
-        value={[false, false]}
-        label='with header row and index column'
-        sample={'sample\nsample'}
-      />
+    <div className='csv-details'>
+      <div className='input-part'>
+        file: <input
+          type='file'
+          onChange={ event => {
+            if(event.target.files.length > 0) setFile(event.target.files[0])
+          } }
+        />
+      </div>
+      <table>
+        <tbody>
+          <SelectCSVFormat
+            format={[format, setFormat]}
+            value={[false, false]}
+            label='data only'
+            sample={'10,20\n30,40\n50,60\n ︙'}
+          />
+          <SelectCSVFormat
+            format={[format, setFormat]}
+            value={[true, false]}
+            label='with header row'
+            sample={'data 0,data 1\n10,20\n30,40\n50,60\n ︙'}
+          />
+          <SelectCSVFormat
+            format={[format, setFormat]}
+            value={[false, true]}
+            label='with index column'
+            sample={'1,10,20\n2,30,40\n3,50,60\n ︙'}
+          />
+          <SelectCSVFormat
+            format={[format, setFormat]}
+            value={[true, true]}
+            label='with header row and index column'
+            sample={',data 0,data 1\n1,10,20\n2,30,40\n3,50,60\n ︙'}
+          />
+        </tbody>
+      </table>
     </div>
   </details>
 }
@@ -107,23 +111,24 @@ const SelectCSVFormat = ({
   value,
   label,
   sample,
-}) => <div>
-  <input
-    type='radio'
-    name='csv-format'
-    checked={ format.every((x, i) => x === value[i]) }
-    onChange={ _ => setFormat(value) }
-  />
-  <label>{label}</label>
-  <div className='csv-sample'>
-    <p>sample: </p>
-    <pre>{sample}</pre>
-  </div>
-</div>
+}) => <tr>
+  <td>
+    <pre className='csv-sample'>{sample}</pre>
+  </td>
+  <td>
+    <input
+      type='radio'
+      name='csv-format'
+      checked={ format.every((x, i) => x === value[i]) }
+      onChange={ _ => setFormat(value) }
+    />
+    <label>{label}</label>
+  </td>
+</tr>
 
 const Data = ({wide, input: [input, setInput]}) => {
   const [focused, setFocused] = React.useState(null);
-  return <div className={`data ${wide}`}>
+  return <div className={`input-part data ${wide}`}>
     <table>
       <thead>
         <tr>

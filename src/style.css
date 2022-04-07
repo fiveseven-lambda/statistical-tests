@@ -1,8 +1,15 @@
 .part {
   background-color: #AAFFFF;
   margin: 10px;
-  padding: 0 10px;
+  padding: 5px 20px;
 }
+
+/*
+h1, h2, h3, p, div, details {
+  border: 1px dashed;
+}
+*/
+
 .footer {
   margin: 10px;
 }
@@ -38,15 +45,30 @@
 .data th > input {
   font-weight: bold;
 }
+.data td {
+  text-align: center;
+}
 .data input {
   border: none;
   text-align: center;
 }
-
-.csv-sample {
-  display: flex;
-  align-items: center;
+.input-part {
+  margin: 20px 0;
 }
-.csv-sample p {
-  margin: 10px;
+
+.csv-input {
+  border-left: 1px solid;
+}
+.csv-input.narrow {
+  overflow-x: scroll;
+}
+.csv-input summary {
+  padding: 10px;
+}
+.csv-details {
+  margin: 20px;
+}
+.csv-sample {
+  border: 1px solid;
+  padding: 0 5px;
 }
