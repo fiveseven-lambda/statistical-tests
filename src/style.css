@@ -63,9 +63,7 @@ h2, h3, p {
 
 .csv-input {
   background-color: white;
-}
-.csv-input.narrow {
-  overflow-x: scroll;
+  width: fit-content;
 }
 .csv-input summary {
   padding: 10px;
