@@ -11,7 +11,9 @@ const Header = () => <header className='part header'>
 </header>
 
 const Footer = () => <footer className='footer'>
-  Footer
+  <p>
+    Footer
+  </p>
 </footer>
 
 ReactDOMClient

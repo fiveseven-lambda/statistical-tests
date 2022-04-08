@@ -12,7 +12,7 @@ export const Body = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   });
-  const wide = windowWidth >= 800 ? 'wide' : 'narrow';
+  const wide = windowWidth >= 960 ? 'wide' : 'narrow';
   return <div className={`body ${wide}`}>
     <Description wide={wide}/>
     <Main wide={wide}/>

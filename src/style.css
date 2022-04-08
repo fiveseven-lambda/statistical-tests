@@ -4,14 +4,12 @@
   padding: 5px 20px;
 }
 
-/*
-h1, h2, h3, p, div, details {
-  border: 1px dashed;
+h2, h3, p {
+  margin: 10px 0;
 }
-*/
 
 .footer {
-  margin: 10px;
+  margin: 0 20px;
 }
 
 .body.wide {
@@ -53,7 +51,7 @@ h1, h2, h3, p, div, details {
   text-align: center;
 }
 .input-part {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .csv-input {
@@ -66,9 +64,10 @@ h1, h2, h3, p, div, details {
   padding: 10px;
 }
 .csv-details {
-  margin: 20px;
+  margin: 0 20px;
 }
 .csv-sample {
   border: 1px solid;
+  margin: 5px 0;
   padding: 0 5px;
 }

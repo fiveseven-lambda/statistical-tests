@@ -63,7 +63,7 @@ const CSV = ({ wide, input: [input, setInput] }) => {
     };
     reader.readAsText(file);
   });
-  return <details className={`input-part csv-input ${wide}`}>
+  return <details className={`csv-input ${wide}`}>
     <summary>import csv</summary>
     <div className='csv-details'>
       <div className='input-part'>
