@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-export const DataInput = ({ wide, input: [input, setInput] }) => <div className='part data-input'>
+export const DataInput = ({ widthSwitch, input: [input, setInput] }) => <div className={`part ${widthSwitch} data-input`}>
   <h2>Data Input</h2>
   <SampleSize input={[input, setInput]}/>
   <Clear input={[input, setInput]}/>
-  <CSV wide={wide} input={[input, setInput]}/>
-  <Data wide={wide} input={[input, setInput]}/>
+  <CSV widthSwitch={widthSwitch} input={[input, setInput]}/>
+  <Data widthSwitch={widthSwitch} input={[input, setInput]}/>
 </div>
 
 const SampleSize = ({ input: [input, setInput] }) => {
@@ -52,7 +52,7 @@ const Clear = ({input: [input, setInput]}) => <div className='input-part'>
   > clear all cells </button>
 </div>
 
-const CSV = ({ wide, input: [input, setInput] }) => {
+const CSV = ({ widthSwitch, input: [input, setInput] }) => {
   const [file, setFile] = React.useState(null);
   const [format, setFormat] = React.useState([false, false]);
   React.useEffect(() => {
@@ -63,7 +63,7 @@ const CSV = ({ wide, input: [input, setInput] }) => {
     };
     reader.readAsText(file);
   });
-  return <details className={`csv-input ${wide}`}>
+  return <details className={`csv-input ${widthSwitch}`}>
     <summary>import csv</summary>
     <div className='csv-details'>
       <div className='input-part'>
@@ -126,9 +126,9 @@ const SelectCSVFormat = ({
   </td>
 </tr>
 
-const Data = ({wide, input: [input, setInput]}) => {
+const Data = ({widthSwitch, input: [input, setInput]}) => {
   const [focused, setFocused] = React.useState(null);
-  return <div className={`input-part data ${wide}`}>
+  return <div className={`input-part data ${widthSwitch}`}>
     <table>
       <thead>
         <tr>

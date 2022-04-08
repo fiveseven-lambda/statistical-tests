@@ -3,23 +3,14 @@ import { KaTeX } from './katex';
 
 import { Main } from './main';
 
-export const Body = () => {
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-  React.useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  });
-  const wide = windowWidth >= 960 ? 'wide' : 'narrow';
-  return <div className={`body ${wide}`}>
-    <Description wide={wide}/>
-    <Main wide={wide}/>
+export const Body = ({ widthSwitch }) => {
+  return <div className={`body ${widthSwitch}`}>
+    <Description widthSwitch={widthSwitch}/>
+    <Main widthSwitch={widthSwitch}/>
   </div>;
 }
 
-const Description = ({ wide }) => <div className={`part description ${wide}`}>
+const Description = ({ widthSwitch }) => <div className={`part description ${widthSwitch}`}>
   <h2>Descriptions</h2>
   <p>
     This page implements paired difference tests (<a href='https://en.wikipedia.org/wiki/Paired_difference_test'>Wikipedia</a>).

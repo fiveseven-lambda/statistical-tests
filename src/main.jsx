@@ -3,7 +3,7 @@ import * as React from 'react';
 import { DataInput  } from './dataInput';
 import { Result } from './result';
 
-export const Main = ({ wide }) => {
+export const Main = ({ widthSwitch }) => {
   const [input, setInput] = React.useState({
     size: '3',
     label: ['Enter data label', 'Enter data label'],
@@ -16,12 +16,13 @@ export const Main = ({ wide }) => {
   result.t = {
     statistic: mean / (variance / Math.sqrt(diff.length))
   };
-  return <div className={`main ${wide}`}>
+  return <div className={`main ${widthSwitch}`}>
     <DataInput
-      wide={wide}
+      widthSwitch={widthSwitch}
       input={[input, setInput]}
     />
     <Result
+      widthSwitch={widthSwitch}
       result={result}
     />
   </div>
